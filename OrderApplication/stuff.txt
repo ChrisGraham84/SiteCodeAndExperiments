@@ -1,0 +1,6 @@
+http://www.howtogeek.com/howto/34334/how-to-use-javascript-to-save-time-by-automating-photoshop/
+http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/products/photoshop/pdfs/cs6/Photoshop-CS6-Scripting-Guide.pdf
+https://www.smashingmagazine.com/2013/07/introduction-to-photoshop-scripting/
+https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=run%20javascript%20in%20photoshop
+http://www.imagemagick.org/script/api.php
+http://www.imagemagick.org/script/api.php

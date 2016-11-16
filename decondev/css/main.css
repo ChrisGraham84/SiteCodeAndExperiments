@@ -1,0 +1,155 @@
+body
+{
+  background-color:  #76c2cc;
+  font-family:arial;
+  color:white;
+}
+#container
+{
+    margin: auto auto;
+    width:800px;
+    height: 100%;
+}
+#header
+{
+    background-color: #cc4618;
+    width:100%;
+   padding: 5px 0 10px;
+    text-align: center;
+    text-shadow:1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+
+a{
+  color:#cc4618
+}
+
+#header h1
+{
+	font-size:24pt;
+	font-weight:bold;
+}
+#header h2
+{
+	font-size:16pt;
+	font-weight:bold;
+}
+
+
+#topNav
+{
+  margin: 10px 0 0;
+   width:100%;
+   text-shadow:1px 1px 0 rgba(0, 0, 0, 0.5);
+}
+#topNav ul
+{
+ 
+  margin:auto;
+  list-style: none;
+}
+#topNav li
+{
+    float:left;
+	 margin-right: 5px;
+}
+#topNav li a
+{
+   
+   width:200px;
+   background-color: #cc4618;
+   display:block;
+   font-weight:bold;
+   width:50px;
+   text-align: center;
+    border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+}
+#topNav li:hover a
+{
+  background-color:grey;
+}
+#topNav a
+{
+  color:white;
+  text-decoration: none;
+  padding:10px;
+}
+#topNav li a.current
+{
+  background-color:#cc9987;
+  
+}
+#content
+{
+    clear:both;
+    background-color:#cc9987;
+    min-height: 200px;
+    height:100%;
+	padding:10px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+#content hr
+{
+  color: #fff;
+  background-color: #fff;
+  height: 1px;
+  width:80%;
+}
+
+
+
+/*index post formatting*/
+#content .postText .postContents
+{
+ padding: 20px;
+}
+#content .postText .postContents:hover
+{
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#content .postText .postContents a
+{
+  color: grey;
+  text-decoration: none;
+}
+#content .postText .postContents h2
+{
+  padding:0 0 2px 0;
+  border-bottom: 2px dotted;
+}
+#content .postText .postContents .postinfo
+{
+  font-size: small;
+}
+
+/*bio page formatting*/
+#content .bioText .bioContents
+{
+ padding: 20px;
+}
+
+#content .bioText .bioContents a
+{
+  color: grey;
+  text-decoration: none;
+}
+#content .bioText .bioContents h2
+{
+  padding:0 0 2px 0;
+  border-bottom: 2px dotted;
+}
+
+.pager
+{
+  list-style:none;
+}
+
+/*footer formatting*/
+#footer
+{
+    clear:both;
+}

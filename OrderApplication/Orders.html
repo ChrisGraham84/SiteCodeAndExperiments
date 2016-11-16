@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+	<head>
+        <title>Order Application</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type='text/javascript' src='knockout-3.4.0.js'></script>
+		<script type='text/javascript' src='knockout.mapping-latest.js'></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type='text/javascript' src='services.js'></script>
+        <script type='text/javascript' src='sampleStyles.js'></script>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body role="document">
+        <div class="container theme-showcase" role="main">
+            <div class="jumbotron">
+                <h2>
+                    <p>Company: <strong  data-bind="text: companyName"></strong></p>
+                    <p><small>Comapny ID: <strong  data-bind="text: companyID"></strong></small></p>
+                </h2>
+               
+            </div>
+             <div data-bind="visible: orders().length > 0">
+                    <ul class="pagination" data-bind="foreach: orders">
+                        <li>
+                            <span data-bind="text: orders.indexOf($data) + 1, click: goToOrder"></span>
+                        </li>    
+                    </ul>
+            </div>
+            
+           
+            <div class="container" data-bind="with: choseOrder">
+              
+            <table  style="float:left;" >                   
+                    <tr>
+                        <td>Order ID: &nbsp;</td>
+                        <td><input data-bind="value: orderId" /></td>
+                    </tr>
+                    <tr>
+                        <td>First Name: &nbsp;</td>
+                        <td><input data-bind="value: firstName" /></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name: &nbsp;</td>
+                        <td><input data-bind="value: lastName" /></td>
+                    </tr>
+                    <tr>
+                        <td>Address1: &nbsp;</td>
+                        <td><input data-bind="value: address1" /></td>
+                    </tr>
+                    <tr>
+                        <td>Address2: &nbsp;</td>
+                        <td><input data-bind="value: address2" /></td>
+                    </tr>
+                    <tr>
+                        <td>City: &nbsp;</td>
+                        <td><input data-bind="value: city" /></td>
+                    </tr>
+                    <tr>
+                        <td>State: &nbsp;</td>
+                        <td><input data-bind="value: state" /></td>
+                    </tr>
+                    <tr>
+                        <td>Zip: &nbsp;</td>
+                        <td><input data-bind="value: zip" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email: &nbsp;</td>
+                        <td><input data-bind="value: email" /></td>
+                    </tr>
+                    <tr>
+                        <td>Country: &nbsp;</td>
+                        <td><select data-bind="options: country, value: countryValue"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Shipping Method: &nbsp;</td>
+                        <td><select data-bind="options: shipping"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Insured: &nbsp;</td>
+                        <td><select data-bind="options: insured, value: insuredValue"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Gift Message: &nbsp;</td>
+                        <td><textarea data-bind="value: giftMessage"></textarea></td>
+                    </tr>
+                </table>
+                <div style="float:right">
+                    <p>OrderId: <strong data-bind="text: orderId"></strong></p>
+                    <p>First Name: <strong data-bind="text: firstName"></strong></p>
+                    <p>Last Name: <strong  data-bind="text:lastName"></strong></p>
+                    <p>Address 1: <strong data-bind="text:address1"></strong></p>
+                    <p>Address 2: <strong  data-bind="text:address2"></strong></p>
+                    <p>City: <strong data-bind="text:city"></strong></p>
+                    <p>State: <strong data-bind="text:state"></strong></p>
+                    <p>Country: <strong data-bind="text:countryValue"></strong></p>
+                    <p>Email: <strong data-bind="text:email"></strong></p>
+                   
+                </div>
+                <br / style="clear:both;">
+                <button class="btn btn-primary" data-bind="click: addItem">Add Item</button>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Design</th>
+                            <th>Style</th>
+                            <th>Color</th>
+                            <th>Size</th>
+                            <th width="10%">Quantity</th>
+                            <th>Remove</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: items">
+                        <tr>
+                            
+                            <td><select class="form-control" data-bind="options: sampleDesigns, optionsText:'name', optionsCaption: 'Select..', value: designValue"></select></td>
+                            <td><select  class="form-control" data-bind='options: sampleStyles, optionsText: "name",optionsCaption: "Select..", value: styleValue'></select></td>
+                            <td data-bind="with: styleValue"><select  class="form-control" data-bind="options: colors, optionsText: 'name', optionsCaption: 'Select..', value: $parent.colorValue "></select></td>
+                            <td data-bind="with: styleValue"><select  class="form-control" data-bind="options: sizes, optionsText: 'name', optionsCaption: 'Select..', value: $parent.sizeValue "></td>
+                            <td><input data-bind="text: quantity"/></td>
+                            <td><a href="#" data-bind="click: $parent.removeItem">Remove</a></td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                    </tbody>
+                </table>                
+                
+                <button class="btn btn-primary" data-bind="click: addOrder">Add Order</button>
+            </div>
+            <a href="http://deconstructiondevelopments.com/GAFYstuff/">Back</a>
+        </div>
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
