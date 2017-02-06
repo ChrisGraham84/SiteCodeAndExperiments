@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script type='text/javascript' src='knockout-3.4.0.js'></script>
-		<script type='text/javascript' src='knockout.mapping-latest.js'></script>
-		<script type='text/javascript' src='interact.js'></script>
-        <script type='text/javascript' src='sampleStyles.js'></script>
-         <script type='text/javascript' src='generator.js'></script>
-        <script type='text/javascript' src='imagetransform.js'></script>
+		<script type='text/javascript' src='js/knockout-3.4.0.js'></script>
+		<script type='text/javascript' src='js/knockout.mapping-latest.js'></script>
+		<script type='text/javascript' src='js/interact.js'></script>
+        <script type='text/javascript' src='js/clientfiles/646_styledesigns.js'></script>
+         <script type='text/javascript' src='js/generator.js'></script>
+        <script type='text/javascript' src='js/imagetransform.js'></script>
         <link href="css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body role="document">
@@ -55,7 +55,7 @@
                         <br />
                         <br />
                          <label>Style</label>
-                         <select class="form-control"  data-bind='options: sampleStyles, optionsText: "name",optionsCaption: "Select..", value: styleValue'></select>
+                         <select class="form-control"  data-bind='options: styles, optionsText: "name",optionsCaption: "Select..", value: styleValue'></select>
                         <br />
                         <br />
                         <div data-bind="with: styleValue">

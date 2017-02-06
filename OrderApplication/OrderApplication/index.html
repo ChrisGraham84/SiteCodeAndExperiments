@@ -7,8 +7,7 @@
 		<script type='text/javascript' src='knockout.mapping-latest.js'></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script type='text/javascript' src='services.js'></script>
-       
-        <script type='text/javascript' src='646_styledesigns.js'></script>
+        <script type='text/javascript' src='sampleStyles.js'></script>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body role="document">
@@ -30,14 +29,9 @@
             
            
             <div class="container" data-bind="with: choseOrder">
-                 <button class="btn btn-primary" data-bind="click: addOrder">New Order</button>
-              <br />
-              <br />
+              
             <table  style="float:left;" >                   
-                     <tr>
-                        <td>Order ID: &nbsp;</td>
-                        <td><input data-bind="value: orderId" /></td>
-                    </tr>
+                    
                     <tr>
                         <td>First Name: &nbsp;</td>
                         <td><input data-bind="value: firstName" /></td>
@@ -63,10 +57,6 @@
                         <td><input data-bind="value: state" /></td>
                     </tr>
                     <tr>
-                        <td>Zip: &nbsp;</td>
-                        <td><input data-bind="value: zip" /></td>
-                    </tr>
-                    <tr>
                         <td>Email: &nbsp;</td>
                         <td><input data-bind="value: email" /></td>
                     </tr>
@@ -80,7 +70,7 @@
                     </tr>
                     <tr>
                         <td>Insured: &nbsp;</td>
-                        <td><select data-bind="options: insured, value: insuredValue"></select></td>
+                        <td><select data-bind="options: insured"></select></td>
                     </tr>
                     <tr>
                         <td>Gift Message: &nbsp;</td>
@@ -88,8 +78,7 @@
                     </tr>
                 </table>
                 <div style="float:right">
-                   <p>Order ID: <strong data-bind="text: orderId"></strong></p>
-                   <p>First Name: <strong data-bind="text: firstName"></strong></p>
+                    <p>First Name: <strong data-bind="text: firstName"></strong></p>
                     <p>Last Name: <strong  data-bind="text:lastName"></strong></p>
                     <p>Address 1: <strong data-bind="text:address1"></strong></p>
                     <p>Address 2: <strong  data-bind="text:address2"></strong></p>
@@ -104,6 +93,7 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                            <th width="15%">Order ID</th>
                             <th>Design</th>
                             <th>Style</th>
                             <th>Color</th>
@@ -115,12 +105,12 @@
                     </thead>
                     <tbody data-bind="foreach: items">
                         <tr>
-                            
-                            <td><select class="form-control" data-bind="options: designs, optionsText:'name', optionsCaption: 'Select..', value: designValue"></select></td>
-                            <td><select  class="form-control" data-bind='options: styles, optionsText: "name",optionsCaption: "Select..", value: styleValue'></select></td>
+                            <td><input data-bind="text: orderId" /></td>
+                            <td><select class="form-control" data-bind="options: sampleDesigns, optionsText:'name', optionsCaption: 'Select..', value: designValue"></select></td>
+                            <td><select  class="form-control" data-bind='options: sampleStyles, optionsText: "name",optionsCaption: "Select..", value: styleValue'></select></td>
                             <td data-bind="with: styleValue"><select  class="form-control" data-bind="options: colors, optionsText: 'name', optionsCaption: 'Select..', value: $parent.colorValue "></select></td>
                             <td data-bind="with: styleValue"><select  class="form-control" data-bind="options: sizes, optionsText: 'name', optionsCaption: 'Select..', value: $parent.sizeValue "></td>
-                            <td><input data-bind="value: quantity"/></td>
+                            <td><input data-bind="text: quantity"/></td>
                             <td><a href="#" data-bind="click: $parent.removeItem">Remove</a></td>
                         </tr>
                         <tr>
@@ -128,15 +118,9 @@
                         </tr>
                     </tbody>
                 </table>                
-            <br />
-            <br />                 
-            
+                
+                <button class="btn btn-primary" data-bind="click: addOrder">Add Order</button>
             </div>
-            <button data-bind="click: send">Send Orders</button>
-            <br />
-            <br />
-            
-            <a href="index.html">Back</a>
         </div>
 		<script src="js/bootstrap.min.js"></script>
 	</body>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
     <head>
-         <title>Mock Up Generator</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -8,7 +7,6 @@
 		<script type='text/javascript' src='knockout.mapping-latest.js'></script>
 		<script type='text/javascript' src='interact.js'></script>
         <script type='text/javascript' src='sampleStyles.js'></script>
-         <script type='text/javascript' src='generator.js'></script>
         <script type='text/javascript' src='imagetransform.js'></script>
         <link href="css/bootstrap.min.css" rel="stylesheet">
     </head>
@@ -24,14 +22,14 @@
         }
         </style>
         <script>
-           /* $(document).ready(function() {
+            $(document).ready(function() {
             $(".swatch").click(function(swatch){
                 //alert($(this).css("background-color"));
                 $("#shirtTemplate").css("background-color", $(this).css("background-color"));
             });
 
          
-            });*/
+            });
         </script>
         <div class="container theme-showcase" role="main">
             <div class="jumbotron">
@@ -45,36 +43,31 @@
             <div class="row" style="background-color: #e8e9e8;">
                 <div class="col-md-4" style="background-color: #e8e9e8;">
                     Shirt Data
-                    <div class="col-md-12" data-bind="with: product">
+                    <div class="col-md-12">
                          <label>Brand</label><br />
-                        <select class="form-control" >
+                        <select>
                             <option>Gildan</option>
-                            <!--<option>American Apparel</option>
-                            <option>LAT</option>-->
+                            <option>American Apparel</option>
+                            <option>LAT</option>
                         </select>
                         <br />
                         <br />
                          <label>Style</label>
-                         <select class="form-control"  data-bind='options: sampleStyles, optionsText: "name",optionsCaption: "Select..", value: styleValue'></select>
                         <br />
                         <br />
-                        <div data-bind="with: styleValue">
+                        <div>
                             <label>Seclect color(s) of the garment</label>
-                            <!--<select  class="form-control" data-bind="options: colors, optionsText: 'name', optionsCaption: 'Select..', value: $parent.colorValue "></select>-->
-                            <div data-bind="foreach: colors">
-                                <!--<strong data-bind="text: name"></strong>-->
-                                <span class="swatch" data-bind="style: {backgroundColor: value}, click: swatchChange" ></span>
-                                <!--<span class="swatch" style="background-color: rgb(241,240,245);"></span>
+                            <div>
+                                <span class="swatch" style="background-color: rgb(0,0,0);"></span>
+                                <span class="swatch" style="background-color: rgb(241,240,245);"></span>
                                 <span class="swatch" style="background-color: rgb(0,245,0);"></span>
                                 <span class="swatch" style="background-color: rgb(0,0,245);"></span>
-                                <span class="swatch" style="background-color: rgb(245,0,0);"></span>-->
+                                <span class="swatch" style="background-color: rgb(245,0,0);"></span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12">
-                       <label>Graphic Upload</label>
-                       <input type="file" id="shirtGraphic" onchange="imagePreview()" /><br/>
-                      
+                       Graphic Upload
                     </div>
                      <div class="col-md-12">
                       Generate Files
@@ -82,16 +75,14 @@
                 </div>
                 <div class="col-md-8">
                     <div class="col-md-12" style="background-color: #e8e9e8;padding:5px;">
-                        <div id="shirtTemplate" class="col-md-12" style="height: 630px; width:530px;background-image: url('img/crew_front.png');background-color:white">
-                            <div style="width:203px; height:250px; margin-left:150px; margin-top:100px;border:2px dashed #e8e9e8;">
-                                <img id="drag-1" class="resize-drag" src="" style="background-color:red" />
+                        <div id="shirtTemplate" class="col-md-12" style="height: 630px; width:530px;background-image: url('img/crew_front.png');background-color:black">
+                            <div style="width:200px; height:250px; margin-left:150px; margin-top:100px;border:2px dashed #e8e9e8; padding:5px">
+                                <img id="drag-1" class="resize-drag" src="img/pilldots_lghtblue_sm.png" style="height: 100px; width:100px; background-color:red" />
                            </div> 
                         </div>
                     </div>
                 </div>
             </div>
-            <a href="index.html">Back</a>
         </div>
-        <script src="js/bootstrap.min.js"></script>
     </body>
 </html>

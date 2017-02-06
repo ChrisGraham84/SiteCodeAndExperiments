@@ -8,21 +8,19 @@ function orderModel() {
     //this.colorOptions = ["Red", "Blue", "Yellow"];
     //this.colorValue = ko.observable("");
     //this.quantity = "0";
-    this.orderId = ko.observable("")
-    this.firstName = ko.observable("");
-    this.lastName = ko.observable("");
-    this.address1 = ko.observable("");
-    this.address2 = ko.observable("");
-    this.city = ko.observable("");
-    this.state = ko.observable("");
-    this.email = ko.observable("");
-    this.zip = ko.observable("");
+    this.firstName = ko.observable(" ");
+    this.lastName = ko.observable(" ");
+    this.address1 = ko.observable(" ");
+    this.address2 = ko.observable(" ");
+    this.city = ko.observable(" ");
+    this.state = ko.observable(" ");
+    this.email = ko.observable(" ");
     this.country = ko.observable(["USA", "Canada", "Other"]);
     this.countryValue = ko.observable("");
     this.shipping = ["USPS First Class (USA Only)", "USPS International First Class"];
     this.shippingValue = ko.observable("");
     this.insured = ["Yes", "No"];
-    this.insuredValue = ko.observable("");
+    this.insured = ko.observable("");
     this.giftMessage = "";
 
     self.items = ko.observableArray([new itemModel()]);
@@ -67,7 +65,7 @@ function companyModel() {
 function itemModel()
 {
      var self = this;
-    //this.orderId = ko.observable("");
+    this.orderId = ko.observable("");
     //this.designOptions = ["X11", "X12", "X13"];
     this.designValue = ko.observable("");
     //this.styleOptions = ["G200", "G200L", "G500"];
