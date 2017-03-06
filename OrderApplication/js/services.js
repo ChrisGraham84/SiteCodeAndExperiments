@@ -13,9 +13,19 @@ function orderModel(count) {
     this.zip = ko.observable("");
     this.country = ko.observable(["USA", "Canada", "Other"]);
     this.countryValue = ko.observable("");
-    this.shipping = ["USPS First Class (USA Only)", "USPS International First Class"];
+    this.shipping = [
+       "USPS - First Class (USA Only)",
+        "USPS - First Class International",
+        "USPS - Priority (USA Only)",
+        "USPS - Priority International",
+        "USPS - Express (USA Only)",
+        "USPS - Express International",
+        "UPS - Ground (USA Only)",
+        "UPS - 2nd Day Air (USA Only)",
+        "UPS - Next Day Air (USA Only)"
+        ];
     this.shippingValue = ko.observable("");
-    this.insured = ["YES", "NO"];
+    this.insured = ["NO", "YES"];
     this.insuredValue = ko.observable("");
     this.giftMessage = "";
 

@@ -7,6 +7,8 @@
 
     $mail = new PHPMailer;
 
+     
+
     //$mail->isSMTP(); 
     $mail->Host = 'gmail.com';
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -20,6 +22,33 @@
     
    $json = file_get_contents('php://input',true);
    $data = json_decode($json);
+
+    $companyid = $data->{"company"}->{"id"};
+     $mysqli = new mysqli("127.0.0.1","chrisush_dev","ph@th3@d","chrisush_GAFYDatabase");
+       if($mysqli->connect_errno){
+           echo "Sorry, this website is experiencing problems.";
+
+           echo "Error: Failed to make a MySQL connection, here is why: \n";
+            echo "Errno: " . $mysqli->connect_errno . "\n";
+            echo "Error: " . $mysqli->connect_error . "\n";
+        }
+         $sql = "SELECT companycontactemail ";
+        $sql .= "FROM  `Company` ";
+        $sql .= "WHERE gafyid = ? ";
+
+         if(!($stmt= $mysqli->prepare($sql))) {
+            echo "Prepare Failed";
+            echo printf("Errormessage: %s\n", $mysqli->error);
+        }
+        if(!$stmt->bind_param("s",$companyid)){
+            echo "Binding Param Failed";
+        }
+         $stmt->execute();
+         $result = $stmt->get_result();
+         $row = $result->fetch_assoc();
+         $companyemail = $row[0];
+         $mail->addAddress($companyemail, $data->{"company"}->{"name"});
+
    //print_r($data);
    echo $json;
   
