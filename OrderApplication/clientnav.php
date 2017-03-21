@@ -1,6 +1,42 @@
+        <?php
+        require_once 'config.php';
+
+        if(isset($_COOKIE['username']) && isset($_COOKIE['userid'])){
+       $username = $_COOKIE['username'];
+       $userid = $_COOKIE['userid'];
+
+        
+        $sql = "SELECT Company.companyname,Company.gafyid,Company.companyid ";
+        $sql .= "FROM  `Company` ";
+        $sql .= "JOIN CompanyUser ON Company.companyid = CompanyUser.companyid ";
+        $sql .= "JOIN User ON CompanyUser.userid = User.userid ";
+        $sql .= "WHERE User.userid = ? ";
+
+        if(!($stmt= $mysqli->prepare($sql))) {
+            echo "Prepare Failed";
+            echo printf("Errormessage: %s\n", $mysqli->error);
+        }
+        if(!$stmt->bind_param("s",$userid)){
+            echo "Binding Param Failed";
+        }
+
+        $stmt->execute();
+        
+         $result = $stmt->get_result();
+        if(! $result ||  $result->num_rows <= 0){
+                echo "There has been an error please go <a href='index.html'>Back</a>";
+        }
+        else{
+              $row = $result->fetch_assoc();
+              $companyid = $row["companyid"];
+              $companyname = $row["companyname"];
+              $gafyid = $row["gafyid"]
+            ?>
+        
+        
         <nav class="navbar yamm navbar-default" role="navigation">
             <ul class="nav navbar-nav">
-            <li style="border-right:2px solid #000"><a href="#"><?php echo $row["companyname"] ?></a></li>
+            <li style="border-right:2px solid #000"><a href="admin.php"><?php echo $companyname ?></a></li>
             <li><a href="#">Styles</a></li>
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Orders<b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -12,7 +48,6 @@
                         <li>
                            <form method="post" action="orders.php">
                         <input type="submit" class="btn btn-info" value="Manage Orders">
-                        <input type="hidden" value="<?php echo $row["gafyid"] ?>" name="companyid">
                     </form>
 
                         </li>
@@ -66,5 +101,8 @@
                 </li>
               </ul>
             </li>
+            <li style="float:right;"><a href="index.html">Logout</a></li>
             </ul>
         </nav>
+
+        <?php }} ?>

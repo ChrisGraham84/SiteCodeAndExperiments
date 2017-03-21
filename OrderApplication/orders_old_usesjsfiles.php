@@ -18,16 +18,8 @@
 	            </head>
                 <?php include 'clientnav.php' ?>
                 <?php  if($companyid && $companyname){    ?>
-                <!--<script type='text/javascript' src='js/clientfiles/<?php echo $gafyid ?>_styledesigns.js'></script>-->
-                <script type='text/javascript' src='./design/designstyles/index.php?companyid=<?php echo $companyid ?>'></script>
-                <script type='text/javascript'>
-                        $(document).ready(function() {
-                            var vm = companyModel('<?php echo $companyname ?>','<?php echo $companyid ?>')
-                            ko.applyBindings(vm);
-                        
-                        });
-
-                </script>
+                <script type='text/javascript' src='js/clientfiles/<?php echo $gafyid ?>_styledesigns.js'></script>
+                <script type='text/javascript' src='./design/index.php?companyid=<?php echo $companyid ?>'></script>
                <body role="document">
                     <style>
                         td {padding:5px 5px;}
@@ -115,10 +107,11 @@
                                     <tbody data-bind="foreach: items">
                                         <tr>
                                             <td><select class="form-control" style="width:110%;" data-bind="options:headers, value:activeSort, optionsText:'title'"></select></td>
-                                            <td><select class="form-control" data-bind="options: sortedDesigns , optionsText: function(i) { return $data.displayName(i.design.designnumber,i.design.description,i.design.printposition) }, optionsCaption: 'Select...', value: designValue"></select></td>
-                                            <td data-bind="with: designValue"><select class="form-control" data-bind='options: styles, optionsText:function(i) { return i.style.stylenumber + " - " + i.style.description },optionsCaption: "Select..", value: $parent.styleValue'></select></td>
-                                            <td data-bind="with: styleValue"><select  class="form-control" data-bind="options: colors, optionsText: function(i){ return i.color.description }, optionsCaption: 'Select..', value: $parent.colorValue "></select></td>
-                                            <td data-bind="with: styleValue"><select  class="form-control" data-bind="options: sizes, optionsText:  function(i){ return i.size.description }, optionsCaption: 'Select..', value: $parent.sizeValue "></td>
+                                            <td><select class="form-control" data-bind="options: xdesigns , optionsText: 'description', optionsCaption: 'test....'"></select></td>
+                                            <td><select class="form-control" data-bind="options: sortedDesigns, optionsText: function(i) { return $data.displayName(i.designid,i.name,i.printposition) }, optionsCaption: 'Select..', value: designValue"></select></td>
+                                            <td><select  class="form-control" data-bind='options: styles, optionsText:function(i) { return i.stylenumber + " - " + i.name },optionsCaption: "Select..", value: styleValue'></select></td>
+                                            <td data-bind="with: styleValue"><select  class="form-control" data-bind="options: colors, optionsText: 'name', optionsCaption: 'Select..', value: $parent.colorValue "></select></td>
+                                            <td data-bind="with: styleValue"><select  class="form-control" data-bind="options: sizes, optionsText: 'name', optionsCaption: 'Select..', value: $parent.sizeValue "></td>
                                             <td ><input style="width:30%;" data-bind="value: quantity"/></td>
                                             <td><a href="#" data-bind="click: $parent.removeItem">Remove</a></td>
                                         </tr>
