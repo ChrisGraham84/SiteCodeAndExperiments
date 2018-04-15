@@ -1,0 +1,236 @@
+body{
+    margin:auto;
+    background-color:#000;
+    width:100%;
+}
+
+.container{
+    height:500px;
+    width: 650px;
+    background-color: rgb(179, 27, 78);
+    border-radius:10px;
+    position:absolute;
+    left: 20px;
+    top: 20px;
+}
+.cheese{
+    position: absolute;
+    top: 110px;
+    left: 88px;
+    
+    z-index: 10;
+}
+.cheese #cshred1_img{
+    position: absolute;
+    top: 171px;
+    left: 24px;
+    transform: rotate(-87deg);
+    opacity: 0;
+    -webkit-animation: fadeIn .5s ease-in 1.3s forwards;
+    animation: fadeIn .5s ease-in 1.3s forwards;
+}
+.cheese #cshred2_img{
+    position: absolute;
+    top: 100px;
+    left: 45px;
+    transform: rotate(-62deg);
+    opacity: 0;
+    -webkit-animation: fadeIn .5s ease-in 1.35s forwards;
+    animation: fadeIn .5s ease-in 1.35s forwards;
+}
+.cheese #cshred3_img{
+    position: absolute;
+    top: 43px;
+    left: 91px;
+    transform: rotate(-40deg);
+    opacity: 0;
+    -webkit-animation: fadeIn .5s ease-in 1.4s forwards;
+    animation: fadeIn .5s ease-in 1.4s forwards;
+}
+.cheese #cshred4_img{
+    position: absolute;
+    top: 9px;
+    left: 170px;
+    transform: rotate(-9deg);
+    opacity: 0;
+    -webkit-animation: fadeIn .5s ease-in 1.45s forwards;
+    animation: fadeIn .5s ease-in 1.45s forwards;
+}
+.cheese #cshred5_img{
+    position: absolute;
+    top: 9px;
+    left: 260px;
+    transform: rotate(9deg);
+    opacity: 0;
+    -webkit-animation: fadeIn .5s ease-in 1.5s forwards;
+    animation: fadeIn .5s ease-in 1.5s forwards;
+}
+.cheese #cshred6_img{
+    position: absolute;
+    top: 43px;
+    left: 338px;
+    transform: rotate(40deg);
+    opacity: 0;
+    -webkit-animation: fadeIn .5s ease-in 1.55s forwards;
+    animation: fadeIn .5s ease-in 1.55s forwards;
+}
+.cheese #cshred7_img{
+    position: absolute;
+    top: 100px;
+    left: 385px;
+    transform: rotate(62deg);
+    opacity: 0;
+    -webkit-animation: fadeIn .5s ease-in 1.6s forwards;
+    animation: fadeIn .5s ease-in 1.6s forwards;
+}
+.cheese #cshred8_img{
+    position: absolute;
+    top: 171px;
+    left: 402px;
+    transform: rotate(87deg);
+    opacity: 0;
+    -webkit-animation: fadeIn .5s ease-in 1.65s forwards;
+    animation: fadeIn .5s ease-in 1.65s forwards;
+}
+.taco_shell{
+    left: 150px;
+    top: 125px;
+    position: absolute;
+    opacity: 0;
+    -webkit-animation: fadeIn .5s ease-in forwards;
+    animation: fadeIn .5s ease-in forwards;
+}
+.taco_shell #shell_img{
+    height:200px;
+    width: 350px;
+}
+.tomato{
+    left:190px;
+    top:225px;
+    position: absolute;
+    opacity: 0;
+    -webkit-animation: fadeIn .5s ease-in .75s forwards;
+    animation: fadeIn .5s ease-in .75s forwards;
+}
+.tomato #tchunk1_img{
+    position: absolute;
+    left: 0px;
+    transform:rotate(25deg);
+}
+.tomato #tchunk2_img{
+    position: absolute;
+    left: 50px;
+    transform:rotate(-25deg);
+}
+.tomato #tchunk3_img{
+    position: absolute;
+    left: 100px;
+    transform:rotate(28deg);
+}
+.tomato #tchunk4_img{
+    position: absolute;
+    left: 150px;
+    transform:rotate(-22deg);
+}
+.tomato #tchunk5_img{
+    position: absolute;
+    left: 200px;
+    transform:rotate(21deg);
+}
+.tomato #tchunk6_img{
+    position: absolute;
+    left: 250px;
+    transform:rotate(-35deg);
+}
+.pepper{
+    left:220px;
+    top:190px;
+    position: absolute;
+    opacity: 0;
+    -webkit-animation: fadeIn .5s ease-in .5s forwards;
+    animation: fadeIn .5s ease-in .5s forwards;
+}
+.pepper #pchunk1_img{
+    position: absolute;
+    left: 0px;
+    transform:rotate(25deg);
+}
+.pepper #pchunk2_img{
+    position: absolute;
+    left: 45px;
+    transform:rotate(-25deg);
+}
+.pepper #pchunk3_img{
+    position: absolute;
+    left: 95px;
+    transform:rotate(28deg);
+}
+.pepper #pchunk4_img{
+    position: absolute;
+    left: 145px;
+    transform:rotate(-22deg);
+}
+.pepper #pchunk5_img{
+    position: absolute;
+    left: 195px;
+    transform:rotate(21deg);
+}
+.pepper #pchunk6_img{
+    position: absolute;
+    left: 245px;
+    transform:rotate(-35deg);
+}
+.taco_meat{
+    left:180px;
+    top:264px;
+    position: absolute;
+    opacity: 0;
+    -webkit-animation: fadeIn .5s ease-in 1.25s forwards;
+    animation: fadeIn .5s ease-in 1.25s forwards;
+}
+.taco_text{
+    left: 215px;
+    top: 325px;
+    position: absolute;
+}
+.el_shadow
+{
+    filter: drop-shadow( 5px 5px 6px rgba(22, 19, 19, 0.433));
+    -webkit-filter: drop-shadow( 5px 5px 6px rgba(22, 19, 19, 0.433));
+    opacity: 0;
+}
+.text_wiggle:hover /*needs work*/
+{
+    -webkit-animation: wiggle 1s alternate infinite !important;
+    animation: wiggle 1s alternate infinite !important;
+    opacity:1;
+}
+.taco_text #t_img{
+    -webkit-animation: fadeIn 1s ease-in 1.75s forwards;
+    animation: fadeIn 1s ease-in 1.75s forwards;
+}
+.taco_text #a_img{
+    -webkit-animation: fadeIn 1s ease-in 2s forwards;
+    animation: fadeIn 1s ease-in 2s forwards;
+}
+.taco_text #c_img{
+    -webkit-animation: fadeIn 1s ease-in 2.25s forwards;
+    animation: fadeIn 1s ease-in 2.25s forwards;
+}
+.taco_text #o_img{
+    -webkit-animation: fadeIn 1s ease-in 2.5s forwards;
+    animation: fadeIn 1s ease-in 2.5s forwards;
+}
+
+@keyframes fadeIn{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes slideUp{
+    from{top:800px; opacity: 0}
+    to{top:400px; opacity: 1}
+}
+@keyframes wiggle{
+    from{transform:rotate(-45deg);}
+    to{transform:rotate(45deg);}
+}
