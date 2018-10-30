@@ -1,5 +1,6 @@
 <?php 
    require_once '../config.php';
+
    if(isset($_GET['companyid']) && intval($_GET['companyid'])){
         
         $companyid = $_GET['companyid'];
@@ -54,13 +55,13 @@
             $styles = array();
             while($row = $result->fetch_assoc())
             {
-            $styles[] = array('style'=>$row);
+            $styles[] = $row;
             }
 
             header('Content-type: application/json');
-            echo json_encode(array('styles'=>$styles));
+            echo json_encode($styles);
         }
 
    }
-
+  
 ?>

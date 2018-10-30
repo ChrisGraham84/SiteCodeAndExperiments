@@ -16,13 +16,14 @@
                     <link href="yamm/yamm.css" rel="stylesheet">
                   <link href="css/demo.css" rel="stylesheet">
 	            </head>
-                <?php include 'clientnav.php' ?>
+                <?php include dirname(__FILE__) .'/clientnav.php' ?>
                 <?php  if($companyid && $companyname){    ?>
                 <!--<script type='text/javascript' src='js/clientfiles/<?php echo $gafyid ?>_styledesigns.js'></script>-->
-                <script type='text/javascript' src='./design/designstyles/index.php?companyid=<?php echo $companyid ?>'></script>
+                <script type='text/javascript' src='./design/index.php?companyid=<?php echo $companyid ?>'></script>
                 <script type='text/javascript'>
                         $(document).ready(function() {
-                            var vm = companyModel('<?php echo $companyname ?>','<?php echo $companyid ?>')
+                            companyid = <?php echo $companyid ?>;
+                            var vm = companyModel('<?php echo $companyname ?>','<?php echo $companyid ?>','<?php echo $email ?>')
                             ko.applyBindings(vm);
                         
                         });
@@ -50,37 +51,51 @@
                                 
                         </div>
                         
-                        <br />
-                        <br />
-                        <div class="container" data-bind="with: choseOrder">
-                            <!--remove order-->
-                            <div class="row">
-                            </div>
-                            <!--Ship To Information-->
-                            <div class="row">
-                            </div>
+                      
 
-                            <table class="table">   
-                                    <tr>
-                                        <td><button class="btn btn-primary" data-bind="click: removeOrder">Remove Order</button></td>
-                                    </tr>              
-                                    <tr>                       
-                                        <td><input class="form-control" placeholder="Order ID" data-bind="value: orderId" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-control" placeholder="First Name" data-bind="value: firstName" /></td>
-                                        <td><input class="form-control" placeholder="Last Name" data-bind="value: lastName" /></td>
-                                        <td><input class="form-control" placeholder="Email" data-bind="value: email" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input class="form-control" placeholder="Address 1" data-bind="value: address1" /></td>
-                                        <td><input class="form-control" placeholder="Address 2" data-bind="value: address2" /></td>
-                                        <td><input class="form-control" placeholder="City" data-bind="value: city" /></td>
-                                        <td><input class="form-control" placeholder="State"  style="width:100px;" data-bind="value: state" /></td>
-                                        <td><select class="form-control" data-bind="options: country, value: countryValue"></td>
-                                        <td><input id="zipcode" class="form-control" placeholder="Zip" style="width:100px;" data-bind="value: zip" /></select></td>
-                                        <td class="checkbox"><label><input id="zipnotrequired" type="checkbox"/><span style="font-size:8pt">Not Required</span></label></td>
-                                        <script>
+
+                        <br />
+                        <br />
+                        <style>
+                            .form-control{margin:2px;}
+                            #AddressInfo .row {margin:0px 0px;}
+                        </style>
+                        <div class="container" data-bind="with: choseOrder">
+                        <div class="row"><button class="btn btn-primary" data-bind="click: removeOrder">Remove Order</button></div>
+                        <div class="row">
+                            <!--Customer Info -->
+                            <div class="col-md-4">
+                              <div class="row"><input class="form-control" placeholder="Order ID" data-bind="value: orderId" /></div>
+                              <div class="row"><input class="form-control" placeholder="First Name" data-bind="value: firstName" /></div>
+                              <div class="row"><input class="form-control" placeholder="Last Name" data-bind="value: lastName" /></div>
+                              <div class="row"><input class="form-control" placeholder="Email" data-bind="value: email" /></div>
+                                <?php if($canpickup){ ?>
+                                        <div class="row"><label><input id="pickup" type="checkbox"/><span style="font-size:8pt">Pick Up</span></label></div>
+                                          <script>
+                                            $('#pickup').click(function(){
+                                                    var zipcode = $('#AddressInfo');
+                                                    if(this.checked){
+                                                        zipcode.hide();
+                                                    }
+                                                    else{
+                                                        zipcode.show();
+                                                    }
+                                                });
+                                        </script>
+                                       <?php } ?>
+                            </div>
+                            <!-- Customer Address Info -->
+                            <div class="col-md-4" id="AddressInfo">
+                                <div class="row"><input class="form-control" placeholder="Address 1" data-bind="value: address1" /></div>
+                                <div class="row"><input class="form-control" placeholder="Address 2" data-bind="value: address2" /></div>
+                                <div class="row"><input class="form-control" placeholder="City" data-bind="value: city" /></div>
+                                <div class="row"><input class="form-control" placeholder="State"  style="width:100px;" data-bind="value: state" /></div>
+                                <div class="row"><select class="form-control" data-bind="options: country, value: countryValue"></select></div>
+                                <div class="row">
+                                    <input id="zipcode" class="form-control" placeholder="Zip" style="width:100px;" data-bind="value: zip" />
+                                    <label><input class="form-control" style="height:12px;" id="zipnotrequired" type="checkbox"/><span style="font-size:8pt">Not Required</span></label>
+                                </div>
+                                 <script>
                                             $('#zipnotrequired').click(function(){
                                                     var zipcode = $('#zipcode');
                                                     if(this.checked){
@@ -91,14 +106,15 @@
                                                     }
                                                 });
                                         </script>
-                                    </tr>
-                                    <tr>
-                                    <td><select class="form-control" data-bind="options: shipping, value: shippingValue"></select></td>
-                                    <td><select class="form-control" data-bind="options: insured, value: insuredValue"></select></td>
-                                        <td><textarea class="form-control" placeholder="Gift Message" data-bind="value: giftMessage"></textarea></td>
-                                    </tr>
-                                </table>
-                                <button class="btn btn-primary" data-bind="click: addItem">Add Item</button>
+                            </div>
+                            <!--Shipping/Misc Info -->
+                            <div class="col-md-4">
+                                <div class="row"><select class="form-control" data-bind="options: shipping, value: shippingValue"></select></div>
+                                <div class="row"><select class="form-control" data-bind="options: insured, value: insuredValue"></select></div>
+                                <div class="row"><textarea class="form-control" placeholder="Gift Message" data-bind="value: giftMessage"></textarea></div>
+                            </div>
+                        </div>
+                        <div class="row"> <button class="btn btn-primary" data-bind="click: addItem">Add Item</button>
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -114,11 +130,11 @@
                                     </thead>
                                     <tbody data-bind="foreach: items">
                                         <tr>
-                                            <td><select class="form-control" style="width:110%;" data-bind="options:headers, value:activeSort, optionsText:'title'"></select></td>
-                                            <td><select class="form-control" data-bind="options: sortedDesigns , optionsText: function(i) { return $data.displayName(i.design.designnumber,i.design.description,i.design.printposition) }, optionsCaption: 'Select...', value: designValue"></select></td>
-                                            <td data-bind="with: designValue"><select class="form-control" data-bind='options: styles, optionsText:function(i) { return i.style.stylenumber + " - " + i.style.description },optionsCaption: "Select..", value: $parent.styleValue'></select></td>
-                                            <td data-bind="with: styleValue"><select  class="form-control" data-bind="options: colors, optionsText: function(i){ return i.color.description }, optionsCaption: 'Select..', value: $parent.colorValue "></select></td>
-                                            <td data-bind="with: styleValue"><select  class="form-control" data-bind="options: sizes, optionsText:  function(i){ return i.size.description }, optionsCaption: 'Select..', value: $parent.sizeValue "></td>
+                                            <td><select class="form-control" style="width:110%;" data-bind="options:headers, value: activeSort, optionsText:'title'"></select></td>
+                                            <td><select class="form-control" data-bind="options: sortedDesigns , optionsText: function(i) { return displayName(i.designnumber,i.description,i.printposition) }, optionsCaption: 'Select...', value: designValue"></select></td>
+                                            <td><select class="form-control" data-bind='options: styles, optionsText:function(i) { return i.stylenumber + " - " + i.description },optionsCaption: "Select..", value: styleValue'></select></td>-
+                                            <td><select  class="form-control" data-bind="options: colors, optionsText: function(i){ return i.description }, optionsCaption: 'Select..', value: colorValue "></select></td>
+                                            <td><select  class="form-control" data-bind="options: sizes, optionsText:  function(i){ return i.description }, optionsCaption: 'Select..', value: sizeValue "></td>
                                             <td ><input style="width:30%;" data-bind="value: quantity"/></td>
                                             <td><a href="#" data-bind="click: $parent.removeItem">Remove</a></td>
                                         </tr>
@@ -126,12 +142,13 @@
 
                                         </tr>
                                     </tbody>
-                                </table>                
+                                </table>    
+                        </div>            
                                 <br />
                                 <br />                 
                         </div>
                         <div style="float:right">
-                            <button class="btn btn-primary" data-bind="click: addOrder">Save Order</button>
+                            <button class="btn btn-primary" data-bind="click: addOrder">Add Order</button>
                             <br />
                             <br />
                              <button data-bind="click: send">Send Orders</button>

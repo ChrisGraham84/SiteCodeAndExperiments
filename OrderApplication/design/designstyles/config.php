@@ -1,5 +1,5 @@
  <?php
-  $mysqli = new mysqli("127.0.0.1","root","","chrisush_GAFYDatabase");
+  $mysqli = new mysqli("127.0.0.1","root","","greatapp_orderapp");
         if($mysqli->connect_errno){
            echo "Sorry, this website is experiencing problems.";
 

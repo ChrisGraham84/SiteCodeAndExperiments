@@ -1,12 +1,12 @@
         <?php
-        require_once 'config.php';
+        require_once dirname(__FILE__) .'/config.php';
 
         if(isset($_COOKIE['username']) && isset($_COOKIE['userid'])){
        $username = $_COOKIE['username'];
        $userid = $_COOKIE['userid'];
 
         
-        $sql = "SELECT Company.companyname,Company.gafyid,Company.companyid ";
+        $sql = "SELECT Company.companyname,Company.gafyid,Company.companyid,Company.canpickup,Company.Companycontactemail ";
         $sql .= "FROM  `Company` ";
         $sql .= "JOIN CompanyUser ON Company.companyid = CompanyUser.companyid ";
         $sql .= "JOIN User ON CompanyUser.userid = User.userid ";
@@ -30,7 +30,9 @@
               $row = $result->fetch_assoc();
               $companyid = $row["companyid"];
               $companyname = $row["companyname"];
-              $gafyid = $row["gafyid"]
+              $canpickup = $row["canpickup"];
+              $gafyid = $row["gafyid"];
+              $email = $row["Companycontactemail"];
             ?>
         
         

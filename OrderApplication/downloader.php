@@ -5,6 +5,11 @@
      require './phpmailer/class.phpmailer.php'; // path to the PHPMailer class
         require './phpmailer/class.smtp.php';
 
+  $json = urldecode($_POST["ords"]);
+   $data = json_decode($json);
+   //why does this fix the encoding issue?
+   $data = json_decode($data);
+
     $mail = new PHPMailer;
 
     //$mail->isSMTP(); 
@@ -16,7 +21,7 @@
     $mail->Port = 587; 
     
     $mail->setFrom('cgraham@greatapparelforyou.com', 'Mailer');
-    $mail->addAddress('cgraham@greatapparelforyou.com', 'Joe User');     // Add a recipient
+    //$mail->addAddress($data->{"company"}->{"email"}, $data->{"company"}->{"name"});     // Add a recipient
     //$mail->addAddress('ellen@example.com');               // Name is optional
     //$mail->addReplyTo('info@example.com', 'Information');
     //$mail->addCC('cc@example.com');
@@ -34,10 +39,7 @@
         echo 'Message has been sent';
     }
 
-    $json = urldecode($_POST["ords"]);
-   $data = json_decode($json);
-   //why does this fix the encoding issue?
-   $data = json_decode($data);
+  
 
    header("Content-type: text/plain");
    header("Content-Disposition: attachment; filename=".$data->{"company"}->{"name"}."_orders.txt");

@@ -14,15 +14,15 @@
         </head>
         <body>
         
-        <?php include 'clientnav.php' ?>
+        <?php include dirname(__FILE__) .'/clientnav.php' ?>
         <?php  if($companyid && $companyname){    ?>
         <div class="container" >
-          <h2>Open Orders:</h2>
+          <!--<h2>Open Orders:</h2>
           <div class="row">
             <div class="col-md-12">
               <p style="background-color:pink">Order : 10018 | 3 Items</p>
             </div>
-          </div>
+          </div> -->
           <h2>Designs </h2>
           <div class="row">
             <div class="col-md-12">
@@ -60,10 +60,11 @@
           <h2>Styles</h2>
             <div class="row">
               <div class="col-md-4">
-                <label>Brands</label>
-                
+                <label>Styles</label>
+                <select class="form-control">
+                   
                   <?php 
-                      $sql = "SELECT DISTINCT(manufacturer) FROM style ";
+                      $sql = "SELECT style.stylenumber, style.styleid, style.description FROM style ";
                       $sql .= "INNER JOIN companystyle ON companystyle.styleid = style.styleid ";
                       $sql .= "WHERE companystyle.companyid = ? ORDER BY manufacturer";
                       $stmt;
@@ -78,24 +79,20 @@
                       $stmt->execute();
                       $result = $stmt->get_result();
 
-                      echo '<select class="form-control">';
+                     
                       if(! $result ||  $result->num_rows <= 0){
                           echo "No Brands Found";
                         }
                         else{
                             while($row = $result->fetch_assoc())
                             {
-                              echo "<option value=".$row["manufacturer"]."> ".$row["manufacturer"]."</option>";
+                              echo "<option value=".$row["styleid"]."> ".$row["stylenumber"]." | ".$row["description"]."</option>";
                             }
                         }
-                        echo '</select>';
+                      
                       
                   ?>
                 
-                <br />
-                <label>Styles</label>
-                <select class="form-control">
-                   
                 </select>             
               </div>
               <div class="col-md-8">

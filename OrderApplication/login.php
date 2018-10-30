@@ -1,5 +1,6 @@
 <?php
-require_once 'config.php';
+@ob_start();
+require_once dirname(__FILE__) .'/config.php';
 
 if(isset($_POST['username']) && isset($_POST['password']))
 {
@@ -21,18 +22,13 @@ if(isset($_POST['username']) && isset($_POST['password']))
 
     $stmt->execute();
     
-    $result = $stmt->get_result();
-    if(!$result || $result->num_rows <= 0){
-        
-        echo 0;
-    }
-    else
-    {
+    $result = $stmt->bind_result($userid,$username);
+    while($stmt->fetch()){
         echo 1;
-        $row = $result->fetch_assoc();
+        //$row = $result->fetch_assoc();
         //echo $row['userid'];
-        setcookie('username', $row['username'], false, '/orderapplication','localhost');
-        setcookie('userid', $row['userid'], false, '/orderapplication','localhost');
+        setcookie('username', $username);
+        setcookie('userid', $userid);
         //echo $_COOKIE['username'];
     }
 }

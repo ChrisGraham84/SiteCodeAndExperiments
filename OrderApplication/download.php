@@ -1,6 +1,6 @@
 <?php 
  
-
+   require_once './config.php';
    require './phpmailer/PHPMailerAutoload.php';
      require './phpmailer/class.phpmailer.php'; // path to the PHPMailer class
         require './phpmailer/class.smtp.php';
@@ -24,14 +24,7 @@
    $data = json_decode($json);
 
     $companyid = $data->{"company"}->{"id"};
-     $mysqli = new mysqli("127.0.0.1","chrisush_dev","ph@th3@d","chrisush_GAFYDatabase");
-       if($mysqli->connect_errno){
-           echo "Sorry, this website is experiencing problems.";
-
-           echo "Error: Failed to make a MySQL connection, here is why: \n";
-            echo "Errno: " . $mysqli->connect_errno . "\n";
-            echo "Error: " . $mysqli->connect_error . "\n";
-        }
+     
          $sql = "SELECT companycontactemail ";
         $sql .= "FROM  `Company` ";
         $sql .= "WHERE gafyid = ? ";
@@ -47,7 +40,7 @@
          $result = $stmt->get_result();
          $row = $result->fetch_assoc();
          $companyemail = $row[0];
-         $mail->addAddress($companyemail, $data->{"company"}->{"name"});
+         //$mail->addAddress($companyemail, $data->{"company"}->{"name"});
 
    //print_r($data);
    echo $json;
@@ -110,23 +103,23 @@
           $orders .= "\t";
           $orders .= $item->{"designValue"}->{"designid"};
           $orders .= "\t";
-          $orders .= $item->{"designValue"}->{"name"};
+          $orders .= $item->{"designValue"}->{"description"};
           $orders .= "\t";
           $orders .= $item->{"designValue"}->{"printposition"};
           $orders .= "\t";
           $orders .= $item->{"styleValue"}->{"stylenumber"};
           $orders .= "\t ";
-          $orders .= $item->{"styleValue"}->{"name"};
+          $orders .= $item->{"styleValue"}->{"description"};
           $orders .= "\t ";
-          $orders .= $item->{"colorValue"}->{"name"};
+          $orders .= $item->{"colorValue"}->{"description"};
           $orders .= "\t ";
-          $orders .= $item->{"sizeValue"}->{"name"};
+          $orders .= $item->{"sizeValue"}->{"description"};
           $orders .= "\t";
-           $orders .= $item->{"quantity"};
-           $orders .= "\t";
+          $orders .= $item->{"quantity"};
+          $orders .= "\t";
           $orders .= $order->{"giftMessage"};
-           $orders .= "\t";
-           $orders .= $order->{"insuredValue"};
+          $orders .= "\t";
+          $orders .= $order->{"insuredValue"};
            $orders .= "\t";
           $orders .= $order->{"shippingValue"};
           $orders .= "\t";
